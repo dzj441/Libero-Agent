@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Clean-room LIBERO support fixture for the VLABench-inspired property
+  question family.  The candidate cue and the button are one fixed assembly;
+  aliases only recolor/reshape the collision-free visual candidate geom.
+  The button touch site is a real MuJoCo sensor and is intentionally not an
+  annotation-only marker.
+-->
+<mujoco model="libero_vlabench_physical_property_button">
+  <compiler angle="radian"/>
+  <worldbody>
+    <body>
+      <body name="object">
+        <!-- One shared base makes the candidate-to-button pairing visible
+             from both benchmark cameras. -->
+        <geom name="pairing_plate" type="box" size="0.075 0.045 0.004"
+              pos="0 0 0.004" group="1" contype="0" conaffinity="0"
+              rgba="0.40 0.45 0.52 1"/>
+        <geom name="button_pedestal" type="cylinder" size="0.034 0.042"
+              pos="-0.045 0 0.048" mass="0.03" group="1"
+              rgba="0.12 0.12 0.12 1"/>
+        <geom name="button_cap" type="cylinder" size="0.032 0.010"
+              pos="-0.045 0 0.085" mass="0.01" group="1"
+              rgba="0.85 0.12 0.12 1" solref="0.002 1"/>
+        <geom name="button_base" type="cylinder" size="0.038 0.006"
+              pos="-0.045 0 0.010" mass="0.03" group="1"
+              rgba="0.12 0.12 0.12 1"/>
+        <!-- Alias post-processing changes only this visible cue. -->
+        <geom name="candidate_visual" type="box" size="0.026 0.026 0.026"
+              pos="0.045 0 0.034" mass="0.08" group="1"
+              contype="0" conaffinity="0" rgba="0.35 0.35 0.35 1"/>
+        <!-- Keep a matching inertial/collision envelope, invisible to cameras. -->
+        <geom name="candidate_collision" type="box" size="0.024 0.024 0.024"
+              pos="0.045 0 0.032" mass="0.08"
+              contype="0" conaffinity="0" rgba="0 0 0 0"/>
+        <site name="button_touch_site" type="cylinder" size="0.032 0.010"
+              pos="-0.045 0 0.085" rgba="0 1 0 0"/>
+        <site name="button_default_site" pos="-0.045 0 0.085" size="0.005"
+              rgba="1 0 0 0"/>
+      </body>
+    </body>
+  </worldbody>
+  <sensor>
+    <touch name="button_touch" site="button_touch_site"/>
+  </sensor>
+</mujoco>

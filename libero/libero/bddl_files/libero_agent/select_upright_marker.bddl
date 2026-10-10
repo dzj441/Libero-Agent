@@ -1,0 +1,30 @@
+(define (problem LIBERO_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language Pick up the upright marker, rather than a fallen marker, and place it in the collection bin.)
+  (:regions
+    (top_item_slot (:target main_table) (:ranges ((-0.245 0.085 -0.155 0.165))))
+    (middle_item_slot (:target main_table) (:ranges ((-0.045 0.085 0.045 0.165))))
+    (bottom_item_slot (:target main_table) (:ranges ((0.155 0.085 0.245 0.165))))
+    (bin_init_region (:target main_table) (:ranges ((0.035 -0.165 0.125 -0.075))))
+    (contain_region (:target perception_bin_1))
+  )
+  (:fixtures
+    main_table - table
+  )
+  (:objects
+    marker_a - vlabench_perception_upright_token
+    marker_b - vlabench_perception_fallen_token
+    marker_c - vlabench_perception_fallen_token_2
+    perception_bin_1 - vlabench_perception_bin
+  )
+  (:obj_of_interest marker_a marker_b marker_c perception_bin_1)
+  (:init
+    (On marker_a main_table_top_item_slot)
+    (On marker_b main_table_middle_item_slot)
+    (On marker_c main_table_bottom_item_slot)
+    (On perception_bin_1 main_table_bin_init_region)
+  )
+  (:goal
+    (And (In marker_a perception_bin_1_contain_region))
+  )
+)

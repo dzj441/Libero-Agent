@@ -1,0 +1,26 @@
+<mujoco model="metaworld_hammer">
+  <!-- Adapted from Farama Meta-World's MIT-licensed hammer asset. -->
+  <asset>
+    <material name="hammer_red" rgba="0.72 0.06 0.04 1" shininess="0.6" specular="0.35"/>
+    <material name="hammer_metal" rgba="0.55 0.58 0.62 1" shininess="0.8" specular="0.7"/>
+  </asset>
+  <worldbody>
+    <body>
+      <body name="object">
+        <geom name="handle_visual" type="capsule" euler="0 1.5707963 0" size="0.020 0.140"
+              material="hammer_red" contype="0" conaffinity="0" group="1"/>
+        <geom name="head_visual" type="cylinder" euler="1.5707963 0 0" pos="0.160 0 0"
+              size="0.034 0.060" material="hammer_metal" contype="0" conaffinity="0" group="1"/>
+        <geom name="handle_collision" type="capsule" euler="0 1.5707963 0" size="0.020 0.140"
+              mass="0.10" friction="0.95 0.3 0.1" group="0" rgba="0.3 0.3 1 0.25"/>
+        <geom name="head_collision" type="cylinder" euler="1.5707963 0 0" pos="0.160 0 0"
+              size="0.034 0.060" mass="0.35" friction="0.95 0.3 0.1" group="0"
+              rgba="0.3 0.3 1 0.25"/>
+        <site name="head_site" pos="0.160 0 0" size="0.004" rgba="0 0 0 0"/>
+      </body>
+      <site name="bottom_site" pos="0 0 -0.035" size="0.005" rgba="0 0 0 0"/>
+      <site name="top_site" pos="0 0 0.035" size="0.005" rgba="0 0 0 0"/>
+      <site name="horizontal_radius_site" pos="0.205 0.065 0" size="0.005" rgba="0 0 0 0"/>
+    </body>
+  </worldbody>
+</mujoco>

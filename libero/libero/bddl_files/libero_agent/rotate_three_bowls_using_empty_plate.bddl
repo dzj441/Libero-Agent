@@ -1,0 +1,60 @@
+(define (problem LIBERO_Kitchen_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language Cyclically rearrange the three black bowls from left to right in the head camera. No bowl may touch the tabletop at any time.)
+  (:regions
+    (wooden_cabinet_init_region
+      (:target kitchen_table)
+      (:ranges ((-0.01 -0.29 0.01 -0.28)))
+      (:yaw_rotation ((3.141592653589793 3.141592653589793))))
+    (plate_random_init_region_1
+      (:target kitchen_table)
+      (:ranges ((-0.25 -0.15 0.10 -0.05)))
+      (:yaw_rotation ((0.0 0.0))))
+    (plate_random_init_region_2
+      (:target kitchen_table)
+      (:ranges ((-0.25 0.00 0.10 0.10)))
+      (:yaw_rotation ((0.0 0.0))))
+    (plate_random_init_region_3
+      (:target kitchen_table)
+      (:ranges ((-0.25 0.15 0.10 0.25)))
+      (:yaw_rotation ((0.0 0.0))))
+    (plate_random_init_region_4
+      (:target kitchen_table)
+      (:ranges ((-0.25 -0.15 0.10 0.25)))
+      (:yaw_rotation ((0.0 0.0))))
+    (top_side (:target wooden_cabinet_1))
+    (top_region (:target wooden_cabinet_1))
+    (middle_region (:target wooden_cabinet_1))
+    (bottom_region (:target wooden_cabinet_1)))
+  (:fixtures
+    kitchen_table - kitchen_table
+    wooden_cabinet_1 - wooden_cabinet)
+  (:objects
+    akita_black_bowl_1 akita_black_bowl_2 akita_black_bowl_3 - akita_black_bowl
+    plate_1 plate_2 plate_3 plate_4 - plate)
+  (:obj_of_interest
+    akita_black_bowl_1
+    akita_black_bowl_2
+    akita_black_bowl_3
+    plate_1
+    plate_2
+    plate_3
+    plate_4)
+  (:init
+    (On wooden_cabinet_1 kitchen_table_wooden_cabinet_init_region)
+    (On plate_1 kitchen_table_plate_random_init_region_1)
+    (On plate_2 kitchen_table_plate_random_init_region_2)
+    (On plate_3 kitchen_table_plate_random_init_region_3)
+    (On plate_4 kitchen_table_plate_random_init_region_4)
+    (On akita_black_bowl_3 plate_3)
+    (On akita_black_bowl_2 plate_2)
+    (On akita_black_bowl_1 plate_1))
+  ;; LIBERO's public BDDL checker is intentionally terminal-only. The private
+  ;; evaluator enforces the four source Sequence transitions in exact order
+  ;; and latches any direct bowl-to-tabletop contact as a failure.
+  (:goal
+    (And
+      (On akita_black_bowl_1 plate_3)
+      (On akita_black_bowl_2 plate_1)
+      (On akita_black_bowl_3 plate_2)))
+)

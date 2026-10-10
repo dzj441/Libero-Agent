@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Clean-room source-only fallback for the VLABench drink family. -->
+<mujoco model="libero_vlabench_drink_primitive">
+  <worldbody>
+    <body>
+      <body name="object">
+        <geom name="drink_visual" type="cylinder" group="1" contype="0" conaffinity="0"
+              size="0.032 0.075" rgba="0.78 0.86 0.95 1"/>
+        <geom name="drink_collision" type="cylinder" group="0" size="0.030 0.073"
+              mass="0.10"/>
+      </body>
+      <site name="bottom_site" pos="0 0 -0.075" size="0.005" rgba="0 0 0 0"/>
+      <site name="top_site" pos="0 0 0.075" size="0.005" rgba="0 0 0 0"/>
+      <site name="horizontal_radius_site" pos="0.032 0 0" size="0.005" rgba="0 0 0 0"/>
+    </body>
+  </worldbody>
+</mujoco>

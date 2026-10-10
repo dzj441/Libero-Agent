@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Texture-only clean-room surrogate with a replaceable accent geom. -->
+<mujoco model="libero_vlabench_perception_texture_primitive">
+  <worldbody>
+    <body>
+      <body name="object">
+        <geom name="texture_visual" type="box" group="1" contype="0" conaffinity="0"
+              size="0.045 0.035 0.045" rgba="0.88 0.76 0.18 1"/>
+        <geom name="texture_accent" type="box" group="1" contype="0" conaffinity="0"
+              pos="-0.024 0 0.046" size="0.004 0.035 0.002" rgba="0.18 0.12 0.05 1"/>
+        <geom name="texture_collision" type="box" group="0" size="0.043 0.033 0.043"
+              mass="0.08"/>
+      </body>
+      <site name="bottom_site" pos="0 0 -0.045" size="0.005" rgba="0 0 0 0"/>
+      <site name="top_site" pos="0 0 0.045" size="0.005" rgba="0 0 0 0"/>
+      <site name="horizontal_radius_site" pos="0.045 0 0" size="0.005" rgba="0 0 0 0"/>
+    </body>
+  </worldbody>
+</mujoco>

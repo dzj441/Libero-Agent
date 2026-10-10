@@ -1,0 +1,22 @@
+(define (problem LIBERO_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language Press the red button.)
+  (:regions
+    (button_init_region
+      (:target main_table)
+      (:ranges ((-0.001 -0.001 0.001 0.001)))
+      (:yaw_rotation ((0.0 0.0))))
+  )
+  (:fixtures
+    main_table - table
+    button_1 - vlabench_single_button
+  )
+  (:objects)
+  (:obj_of_interest button_1)
+  (:init
+    (On button_1 main_table_button_init_region)
+  )
+  ;; The generic BDDL goal is diagnostic only. The private evaluator requires
+  ;; sustained robot contact with the sole physical button.
+  (:goal (And (On button_1 main_table_button_init_region)))
+)

@@ -1,0 +1,30 @@
+# Rebuilt Agent benchmark environment (Python 3.10).
+# Install LIBERO separately with pip install --no-deps -e .
+numpy==1.24.4
+mujoco==3.2.3
+robosuite==1.4.0
+torch==2.5.1
+torchvision==0.20.1
+h5py==3.11.0
+opencv-python==4.6.0.66
+imageio==2.37.0
+imageio-ffmpeg==0.6.0
+Pillow==11.1.0
+scipy==1.13.1
+numba==0.60.0
+matplotlib==3.5.3
+hydra-core==1.2.0
+wandb==0.13.1
+easydict==1.9
+transformers==4.21.1
+robomimic==0.2.0
+einops==0.8.1
+thop==0.1.1.post2209072238
+bddl==1.0.1
+future==0.18.2
+cloudpickle==2.1.0
+gym==0.25.2
+PyYAML==6.0.2
+pytest==8.3.5
+psutil==7.0.0
+setuptools==80.9.0

@@ -1,0 +1,35 @@
+(define (problem LIBERO_Coffee_Table_Manipulation)
+  (:domain robosuite)
+  (:language Pour wine from the bottle into the mug.)
+  (:regions
+    ;; Preserve the source Task 10 seed-100 layout so its verified OSC expert
+    ;; prefix remains a valid physical replay after removing the distractors.
+    (wine_bottle_init_region
+      (:target coffee_table)
+      (:ranges ((-0.18491448918922607 0.21896231967946875 -0.1449144891892261 0.25896231967946876)))
+      (:yaw_rotation ((0.0 0.0))))
+    (white_yellow_mug_init_region
+      (:target coffee_table)
+      (:ranges ((0.016806389414873935 0.22745663450005946 0.05680638941487394 0.26745663450005946)))
+      (:yaw_rotation ((0.0 0.0))))
+    (pour_event_sentinel_region
+      (:target coffee_table)
+      (:ranges ((-0.451 -0.551 -0.449 -0.549)))))
+  (:fixtures
+    coffee_table - coffee_table)
+  (:objects
+    wine_bottle_1 - wine_bottle
+    white_yellow_mug_1 - white_yellow_mug)
+  (:obj_of_interest
+    wine_bottle_1
+    white_yellow_mug_1)
+  (:init
+    (On wine_bottle_1 coffee_table_wine_bottle_init_region)
+    (On white_yellow_mug_1 coffee_table_white_yellow_mug_init_region))
+  ;; Pouring is a trajectory event and cannot be represented faithfully by
+  ;; stock LIBERO terminal predicates. This unreachable-from-correct-pouring
+  ;; sentinel keeps the generic diagnostic false; the evaluator-private
+  ;; physical pour event is authoritative.
+  (:goal
+    (And (On wine_bottle_1 coffee_table_pour_event_sentinel_region)))
+)

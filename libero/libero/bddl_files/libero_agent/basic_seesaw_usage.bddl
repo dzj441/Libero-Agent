@@ -1,0 +1,66 @@
+(define (problem Libero_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language Lift the hidden object and place it in the basket.)
+    (:regions
+      (seesaw_init_region
+          (:target main_table)
+          (:ranges ((-0.331 -0.001 -0.329 0.001)))
+      )
+      (target_init_region
+          (:target main_table)
+          (:ranges ((-0.44 -0.10 -0.24 0.10)))
+      )
+      (weight_left_init_region
+          (:target main_table)
+          ;; Keep the first counterweight on the front tabletop, away from
+          ;; the articulated board.  The original back-side range was hidden
+          ;; by the seesaw / arm in the public views at reset.
+          (:ranges ((-0.16 -0.30 -0.06 -0.20)))
+      )
+      (weight_right_init_region
+          (:target main_table)
+          ;; The second counterweight is on the separated back tabletop range,
+          ;; with a y-gap from weight_1 and from the seesaw board.  Both are
+          ;; reachable tabletop placements, never preloaded board contacts.
+          (:ranges ((-0.04 0.20 0.06 0.30)))
+      )
+      (basket_init_region
+          (:target main_table)
+          (:ranges ((0.04 -0.18 0.18 -0.08)))
+      )
+      (contain_region
+          (:target basket_1)
+      )
+    )
+
+  (:fixtures
+    main_table - table
+    seesaw_1 - vlabench_seesaw
+  )
+
+  (:objects
+    target_1 - milk
+    weight_1 weight_2 - vlabench_seesaw_weight
+    basket_1 - basket
+  )
+
+  (:obj_of_interest
+    seesaw_1
+    target_1
+    weight_1
+    weight_2
+    basket_1
+  )
+
+  (:init
+    (On seesaw_1 main_table_seesaw_init_region)
+    (On target_1 main_table_target_init_region)
+    (On weight_1 main_table_weight_left_init_region)
+    (On weight_2 main_table_weight_right_init_region)
+    (On basket_1 main_table_basket_init_region)
+  )
+
+  (:goal
+    (And (In target_1 basket_1_contain_region))
+  )
+)

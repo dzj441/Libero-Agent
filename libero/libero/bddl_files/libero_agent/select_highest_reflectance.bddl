@@ -1,0 +1,35 @@
+(define (problem LIBERO_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language The three candidate-button pairs have visibly different surface reflectance. Press the button paired with the most reflective object.)
+  (:regions
+    (left_button_init_region
+      (:target main_table)
+      (:ranges ((-0.001 -0.181 0.001 -0.179)))
+      (:yaw_rotation ((0.0 0.0))))
+    (middle_button_init_region
+      (:target main_table)
+      (:ranges ((-0.001 -0.001 0.001 0.001)))
+      (:yaw_rotation ((0.0 0.0))))
+    (right_button_init_region
+      (:target main_table)
+      (:ranges ((-0.001 0.179 0.001 0.181)))
+      (:yaw_rotation ((0.0 0.0))))
+  )
+  (:fixtures
+    main_table - table
+    button_1 - vlabench_property_reflection_matte_gray
+    ;; Put the polished steel panel in the centre position so its specular
+    ;; cue is visible from the initial head-camera view.  The wood panel moves
+    ;; to the right; the private V2 evaluator follows this visual pairing.
+    button_2 - vlabench_property_reflection_polished_silver
+    button_3 - vlabench_property_reflection_satin_gray
+  )
+  (:objects)
+  (:obj_of_interest button_1 button_2 button_3)
+  (:init
+    (On button_1 main_table_left_button_init_region)
+    (On button_2 main_table_middle_button_init_region)
+    (On button_3 main_table_right_button_init_region)
+  )
+  (:goal (And (On button_2 main_table_middle_button_init_region)))
+)

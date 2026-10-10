@@ -1,0 +1,28 @@
+(define (problem LIBERO_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language Drive the nail into the wooden block.)
+  (:regions
+    (hammer_init_region
+      (:target main_table)
+      (:ranges ((-0.30 -0.28 -0.12 -0.12)))
+      (:yaw_rotation ((0.0 0.0))))
+    (block_init_region
+      (:target main_table)
+      (:ranges ((0.13 0.13 0.23 0.23)))
+      (:yaw_rotation ((0.0 0.0))))
+    (hammer_goal_region
+      (:target hammer_block_1)))
+  (:fixtures
+    main_table - table
+    hammer_block_1 - metaworld_hammer_block)
+  (:objects
+    hammer_1 - metaworld_hammer)
+  (:obj_of_interest hammer_1 hammer_block_1)
+  (:init
+    (On hammer_1 main_table_hammer_init_region)
+    (On hammer_block_1 main_table_block_init_region))
+  ;; The carried-over private evaluator additionally requires lift, contact,
+  ;; and nail displacement. This relation remains a terminal diagnostic.
+  (:goal
+    (And (In hammer_1 hammer_block_1_hammer_goal_region)))
+)

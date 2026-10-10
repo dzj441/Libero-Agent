@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Small clean-room receptacle used when the external basket is unavailable. -->
+<mujoco model="libero_vlabench_perception_bin_primitive">
+  <worldbody>
+    <body>
+      <body name="object">
+        <geom name="bin_floor_visual" type="box" group="1" contype="0" conaffinity="0"
+              pos="0 0 0.012" size="0.085 0.075 0.012" rgba="0.18 0.25 0.32 1"/>
+        <geom name="bin_front_collision" type="box" group="0" pos="0 -0.075 0.060"
+              size="0.085 0.006 0.060" mass="0.04"/>
+        <geom name="bin_back_collision" type="box" group="0" pos="0 0.075 0.060"
+              size="0.085 0.006 0.060" mass="0.04"/>
+        <geom name="bin_left_collision" type="box" group="0" pos="-0.085 0 0.060"
+              size="0.006 0.075 0.060" mass="0.04"/>
+        <geom name="bin_right_collision" type="box" group="0" pos="0.085 0 0.060"
+              size="0.006 0.075 0.060" mass="0.04"/>
+        <geom name="bin_front_visual" type="box" group="1" contype="0" conaffinity="0"
+              pos="0 -0.075 0.060" size="0.085 0.006 0.060" rgba="0.18 0.25 0.32 1"/>
+        <geom name="bin_back_visual" type="box" group="1" contype="0" conaffinity="0"
+              pos="0 0.075 0.060" size="0.085 0.006 0.060" rgba="0.18 0.25 0.32 1"/>
+        <geom name="bin_left_visual" type="box" group="1" contype="0" conaffinity="0"
+              pos="-0.085 0 0.060" size="0.006 0.075 0.060" rgba="0.18 0.25 0.32 1"/>
+        <geom name="bin_right_visual" type="box" group="1" contype="0" conaffinity="0"
+              pos="0.085 0 0.060" size="0.006 0.075 0.060" rgba="0.18 0.25 0.32 1"/>
+        <site name="contain_region" type="box" pos="0 0 0.075" quat="1 0 0 0" size="0.070 0.060 0.055"
+              group="3" rgba="0 0 0 0"/>
+      </body>
+      <site name="bottom_site" pos="0 0 0" size="0.005" rgba="0 0 0 0"/>
+      <site name="top_site" pos="0 0 0.135" size="0.005" rgba="0 0 0 0"/>
+      <site name="horizontal_radius_site" pos="0.085 0 0" size="0.005" rgba="0 0 0 0"/>
+    </body>
+  </worldbody>
+</mujoco>

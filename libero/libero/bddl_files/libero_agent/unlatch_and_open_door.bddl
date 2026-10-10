@@ -1,0 +1,22 @@
+(define (problem LIBERO_Robosuite_Door_Manipulation)
+  (:domain robosuite)
+  (:language Open the door. It is secured by a rotating latch.)
+  (:regions
+    (door_init_region
+      (:target main_table)
+      ;; Match robosuite Door's source sampler relative to its TableArena.
+      (:ranges ((0.07 -0.01 0.09 0.01)))
+      (:yaw_rotation ((-1.8207963 -1.5707963)))))
+  (:fixtures
+    main_table - table
+    latched_door_1 - robosuite_latched_door)
+  (:objects)
+  (:obj_of_interest latched_door_1)
+  (:init
+    (On latched_door_1 main_table_door_init_region)
+    (Close latched_door_1))
+  ;; The first adaptation deliberately preserves robosuite Door's stock
+  ;; hinge-only success semantics. A history checker is a later milestone.
+  (:goal
+    (And (Open latched_door_1)))
+)

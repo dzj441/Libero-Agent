@@ -1,0 +1,532 @@
+{
+  "schema_version": "libero.vlabench_asset_manifest.v1",
+  "source": {
+    "name": "VLABench",
+    "repository": "OpenMOSS/VLABench",
+    "commit": "cf588fe60c0c7282174fe979f5913170cfe69017",
+    "source_license": "MIT (source code; verify upstream terms before redistribution)",
+    "provenance_note": "The adapter uses the upstream task/source layout and does not relicense or redistribute the separate asset bundle."
+  },
+  "assets": {
+    "repository": "lerobot/vlabench-assets",
+    "revision": "08d7a4479a55c8fbb89ac0fd6fcf06e53d65b4a4",
+    "download_url": "https://huggingface.co/datasets/lerobot/vlabench-assets/tree/08d7a4479a55c8fbb89ac0fd6fcf06e53d65b4a4",
+    "requires_user_download": true,
+    "included_in_libero": false,
+    "license_status": "No independent asset license/NOTICE was observed in the pinned bundle; users must obtain and use it under terms applicable to them. This manifest is provenance, not a license grant."
+  },
+  "external_root": {
+    "environment_variable": "LIBERO_VLABENCH_ASSET_ROOT",
+    "expected_subdirectory": "obj/meshes"
+  },
+  "entries": [
+    {
+      "key": "bbq_sauce",
+      "category": "condiment",
+      "candidate_paths": [
+        "obj/meshes/condiment/bbq_sauce/bbq_sauce0/bbq_sauce.xml",
+        "obj/meshes/condiment/bbq_sauce/bbq_sauce*/model.xml",
+        "obj/meshes/snacks_and_drinks/bbq_sauce/**/*.xml"
+      ],
+      "notes": "Representative static condiment; the first downloaded variant is selected deterministically. The bbq_sauce0 XML/mesh is byte-identical to the existing LIBERO HOPE asset in the audit; this adapter keeps the external provenance explicit and does not add another binary copy."
+    },
+    {
+      "key": "hotsauce",
+      "category": "condiment",
+      "candidate_paths": [
+        "obj/meshes/condiment/hotsauce/model.xml",
+        "obj/meshes/condiment/hot_sauce/**/*.xml",
+        "obj/meshes/snacks_and_drinks/hotsauce/**/*.xml"
+      ]
+    },
+    {
+      "key": "ketchup",
+      "category": "condiment",
+      "candidate_paths": [
+        "obj/meshes/condiment/ketchup/ketchup_0/model.xml",
+        "obj/meshes/condiment/ketchup/ketchup_*/model.xml",
+        "obj/meshes/snacks_and_drinks/ketchup/**/*.xml"
+      ]
+    },
+    {
+      "key": "salad_dressing",
+      "category": "condiment",
+      "candidate_paths": [
+        "obj/meshes/condiment/salad_dressing/salad_dressing.xml",
+        "obj/meshes/condiment/salad_dressing/**/*.xml",
+        "obj/meshes/snacks_and_drinks/new_salad_dressing/**/*.xml"
+      ]
+    },
+    {
+      "key": "sugar",
+      "category": "condiment",
+      "candidate_paths": [
+        "obj/meshes/condiment/shaker/shaker_1/model.xml",
+        "obj/meshes/condiment/shaker/shaker_2/model.xml",
+        "obj/meshes/condiment/shaker/shaker_*/model.xml"
+      ],
+      "notes": "VLABench exposes sugar as a semantic role over shaker assets. The first pinned candidate is the light shaker_1 variant used by add_condiment examples; the normal package/mesh remains the only visual cue and no evaluator-role metadata is added."
+    },
+    {
+      "key": "salt",
+      "category": "condiment",
+      "candidate_paths": [
+        "obj/meshes/condiment/shaker/shaker_0/model.xml",
+        "obj/meshes/condiment/shaker/shaker_2/model.xml",
+        "obj/meshes/condiment/shaker/shaker_*/model.xml"
+      ],
+      "notes": "VLABench exposes salt as a semantic role over shaker assets. shaker_0 is the first pinned candidate used by add_condiment examples; no evaluator-role metadata is added."
+    },
+    {
+      "key": "nametag",
+      "category": "visual_support",
+      "candidate_paths": [
+        "obj/meshes/tube/nametag/nametag.xml"
+      ],
+      "notes": "The upstream NameTag mesh is used only as ordinary visual support for condiment presentation. Sugar, salt, and a generated Hot Sauce texture all use the same scale=2 mesh. It is attached to the arena as a non-task world-frame body and is excluded from BDDL objects, masks, and evaluator state."
+    },
+    {
+      "key": "shaker",
+      "category": "condiment",
+      "candidate_paths": [
+        "obj/meshes/condiment/shaker/shaker_0/model.xml",
+        "obj/meshes/condiment/shaker/shaker_*/model.xml"
+      ]
+    },
+    {
+      "key": "basket",
+      "category": "container",
+      "candidate_paths": [
+        "obj/meshes/containers/basket/basket/basket.xml",
+        "obj/meshes/containers/basket/basket2/basket.xml",
+        "obj/meshes/containers/basket/**/*.xml"
+      ],
+      "notes": "Representative open container/receptacle."
+    },
+    {
+      "key": "tray",
+      "category": "container",
+      "candidate_paths": [
+        "obj/meshes/containers/tray/tray_0/model.xml",
+        "obj/meshes/containers/tray/tray_*/model.xml"
+      ]
+    },
+    {
+      "key": "cutting_board",
+      "category": "container",
+      "candidate_paths": [
+        "obj/meshes/containers/cutting_board/cutting_board_0/model.xml",
+        "obj/meshes/containers/cutting_board/cutting_board_*/model.xml"
+      ]
+    },
+    {
+      "key": "giftbox",
+      "category": "container",
+      "candidate_paths": [
+        "obj/meshes/containers/boxes/giftbox/giftbox_0/giftbox.xml",
+        "obj/meshes/containers/boxes/giftbox/*/giftbox.xml"
+      ]
+    },
+    {
+      "key": "vase",
+      "category": "container",
+      "candidate_paths": [
+        "obj/meshes/containers/vases/vase_0/vase.xml",
+        "obj/meshes/containers/vases/*/vase.xml"
+      ]
+    },
+    {
+      "key": "shelf",
+      "category": "container",
+      "candidate_paths": [
+        "obj/meshes/containers/shelf/shelf1.xml",
+        "obj/meshes/containers/shelf/shelf2.xml"
+      ],
+      "notes": "Primitive shelf fixture; the upstream XML references wood0.png in its own asset tree."
+    },
+    {
+      "key": "short_cabinet",
+      "category": "container",
+      "candidate_paths": [
+        "obj/meshes/containers/cabinets/short_cabinet/short_cabinet_fix.xml",
+        "obj/meshes/containers/cabinets/short_cabinet/**/*.xml"
+      ],
+      "interactive": true
+    },
+    {
+      "key": "wooden_cabinet",
+      "category": "container",
+      "candidate_paths": [
+        "obj/meshes/containers/cabinets/wooden_cabinet/wooden_cabinet.xml",
+        "obj/meshes/containers/cabinets/wooden_cabinet/**/*.xml"
+      ],
+      "interactive": true
+    },
+    {
+      "key": "microwave",
+      "category": "container",
+      "candidate_paths": [
+        "obj/meshes/containers/microwaves/standard/model.xml",
+        "obj/meshes/containers/microwaves/*/model.xml"
+      ],
+      "interactive": true
+    },
+    {
+      "key": "billiards_table",
+      "category": "container",
+      "candidate_paths": [
+        "obj/meshes/containers/billiards_table/billiards_table.xml"
+      ]
+    },
+    {
+      "key": "knife",
+      "category": "tool",
+      "candidate_paths": [
+        "obj/meshes/tablewares/knife/**/*.xml",
+        "obj/meshes/tablewares/knifes/**/*.xml",
+        "obj/meshes/tools/knife/**/*.xml",
+        "obj/meshes/tools/knives/**/*.xml"
+      ]
+    },
+    {
+      "key": "spoon",
+      "category": "tool",
+      "candidate_paths": [
+        "obj/meshes/tablewares/spoon/**/*.xml",
+        "obj/meshes/tablewares/spoons/**/*.xml",
+        "obj/meshes/tools/spoon/**/*.xml"
+      ]
+    },
+    {
+      "key": "hammer",
+      "category": "tool",
+      "candidate_paths": [
+        "obj/meshes/tools/hammer/whole_hammer/hammer_*/hammer*.xml",
+        "obj/meshes/tools/hammer/whole_hammer/**/*.xml",
+        "obj/meshes/tools/hammer/**/*.xml",
+        "obj/meshes/tools/hammer_handle/**/*.xml"
+      ],
+      "notes": "Representative complete static hammer assembly; VLABench task-side hammer/nail state logic is not implied by this XML wrapper."
+    },
+    {
+      "key": "seesaw",
+      "category": "interactive",
+      "candidate_paths": [
+        "obj/meshes/tools/seesaw_machine/seesaw_machine.xml",
+        "obj/meshes/tools/seesaw/**/*.xml",
+        "obj/meshes/interactive/seesaw/**/*.xml"
+      ],
+      "interactive": true,
+      "primitive_fallback": "seesaw_primitive.xml",
+      "notes": "The external XML is preferred once its resources arrive. Until then a repository-owned primitive reconstruction preserves the smoke hinge contract; the fallback is development/smoke-only and must not substitute for the external asset in benchmark tasks."
+    },
+    {
+      "key": "tube",
+      "category": "tube",
+      "candidate_paths": [
+        "obj/meshes/tube/tube/tube.xml"
+      ],
+      "notes": "VLABench ChemistryTube mesh with solution material variants applied by the LIBERO wrapper."
+    },
+    {
+      "key": "tube_stand",
+      "category": "tube_fixture",
+      "candidate_paths": [
+        "obj/meshes/tube/tube_container/tube_stand.xml"
+      ],
+      "notes": "VLABench test-tube rack fixture; slot sites are added by the LIBERO wrapper without changing the external asset."
+    },
+    {
+      "key": "fruit",
+      "category": "fruit",
+      "candidate_paths": [
+        "obj/meshes/fruit/**/*.xml",
+        "obj/meshes/fruits/**/*.xml"
+      ],
+      "primitive_fallback": "fruit_primitive.xml",
+      "notes": "VLABench fruit family used by the matched common-sense selection task. The adapter keeps the source fruit mesh external and uses a small clean-room sphere only for source-only tests."
+    },
+    {
+      "key": "orange_fruit",
+      "category": "fruit",
+      "candidate_paths": [
+        "obj/meshes/fruit/orange/orange_0/model.xml",
+        "obj/meshes/fruit/orange/orange_*/model.xml",
+        "obj/meshes/fruit/orange/**/*.xml"
+      ],
+      "primitive_fallback": "fruit_primitive.xml"
+    },
+    {
+      "key": "apple_fruit",
+      "category": "fruit",
+      "candidate_paths": [
+        "obj/meshes/fruit/apple/apple_0/model.xml",
+        "obj/meshes/fruit/apple/apple_*/model.xml",
+        "obj/meshes/fruit/apple/**/*.xml"
+      ],
+      "primitive_fallback": "fruit_primitive.xml"
+    },
+    {
+      "key": "banana_fruit",
+      "category": "fruit",
+      "candidate_paths": [
+        "obj/meshes/fruit/banana/banana_0/banana.xml",
+        "obj/meshes/fruit/banana/banana_*/model.xml",
+        "obj/meshes/fruit/banana/**/*.xml"
+      ],
+      "primitive_fallback": "fruit_primitive.xml"
+    },
+    {
+      "key": "drink",
+      "category": "drink",
+      "candidate_paths": [
+        "obj/meshes/drinks/**/*.xml",
+        "obj/meshes/snacks_and_drinks/**/*.xml"
+      ],
+      "primitive_fallback": "drink_primitive.xml",
+      "notes": "VLABench drink family used by the calcium-selection task; source XML and textures remain user-provided."
+    },
+    {
+      "key": "milk_drink",
+      "category": "drink",
+      "candidate_paths": [
+        "obj/meshes/drinks/milk/**/*.xml",
+        "obj/meshes/drinks/milk/*.xml"
+      ],
+      "primitive_fallback": "drink_primitive.xml"
+    },
+    {
+      "key": "cola_drink",
+      "category": "drink",
+      "candidate_paths": [
+        "obj/meshes/drinks/sota_drink/cola/cola_0/model.xml",
+        "obj/meshes/drinks/sota_drink/cola/**/*.xml"
+      ],
+      "primitive_fallback": "drink_primitive.xml"
+    },
+    {
+      "key": "juice_drink",
+      "category": "drink",
+      "candidate_paths": [
+        "obj/meshes/drinks/juice/bottled_drink_2/model.xml",
+        "obj/meshes/drinks/juice/**/*.xml"
+      ],
+      "primitive_fallback": "drink_primitive.xml"
+    },
+    {
+      "key": "bloom_flower",
+      "category": "flower",
+      "candidate_paths": [
+        "obj/meshes/flowers/bloom_flower/**/*.xml",
+        "obj/meshes/flowers/bloomed/**/*.xml"
+      ],
+      "primitive_fallback": "bloom_flower_primitive.xml",
+      "notes": "VLABench blooming-flower family for semantic and perception matches."
+    },
+    {
+      "key": "rose_flower",
+      "category": "flower",
+      "candidate_paths": [
+        "obj/meshes/flowers/bloom_flower/rose/rose_0/rose_0.xml",
+        "obj/meshes/flowers/bloom_flower/rose/**/*.xml"
+      ],
+      "primitive_fallback": "bloom_flower_primitive.xml"
+    },
+    {
+      "key": "sunflower_flower",
+      "category": "flower",
+      "candidate_paths": [
+        "obj/meshes/flowers/bloom_flower/sunflower/sunflower_0/sunflower_0.xml",
+        "obj/meshes/flowers/bloom_flower/sunflower/**/*.xml"
+      ],
+      "primitive_fallback": "bloom_flower_primitive.xml"
+    },
+    {
+      "key": "daisy_flower",
+      "category": "flower",
+      "candidate_paths": [
+        "obj/meshes/flowers/bloom_flower/daisy/daisy_0/daisy_0.xml",
+        "obj/meshes/flowers/bloom_flower/daisy/**/*.xml"
+      ],
+      "primitive_fallback": "bloom_flower_primitive.xml"
+    },
+    {
+      "key": "peony_flower",
+      "category": "flower",
+      "candidate_paths": [
+        "obj/meshes/flowers/bloom_flower/peony/peony_0/peony_0.xml",
+        "obj/meshes/flowers/bloom_flower/peony/**/*.xml"
+      ],
+      "primitive_fallback": "bloom_flower_primitive.xml",
+      "notes": "Readable blooming-flower distractor for the romantic-love task."
+    },
+    {
+      "key": "chrysanthemum_flower",
+      "category": "flower",
+      "candidate_paths": [
+        "obj/meshes/flowers/bloom_flower/chrysanthemum/chrysanthemum_0/chrysanthemum_0.xml",
+        "obj/meshes/flowers/bloom_flower/chrysanthemum/**/*.xml"
+      ],
+      "primitive_fallback": "bloom_flower_primitive.xml",
+      "notes": "Readable chrysanthemum distractor for the romantic-love task."
+    },
+    {
+      "key": "tulip_flower",
+      "category": "flower",
+      "candidate_paths": [
+        "obj/meshes/flowers/bloom_flower/tulip/tulip_draft_1/tulip_draft_1.xml",
+        "obj/meshes/flowers/bloom_flower/tulip/**/*.xml"
+      ],
+      "primitive_fallback": "bloom_flower_primitive.xml",
+      "notes": "Readable tulip distractor candidate; source provides two draft variants."
+    },
+    {
+      "key": "wilted_flower",
+      "category": "flower",
+      "candidate_paths": [
+        "obj/meshes/flowers/wilted_flower/**/*.xml",
+        "obj/meshes/flowers/wilted/**/*.xml"
+      ],
+      "primitive_fallback": "wilted_flower_primitive.xml",
+      "notes": "VLABench wilted-flower family; no evaluator metadata is added to the visual adapter."
+    },
+    {
+      "key": "chemistry_solution",
+      "category": "tube",
+      "candidate_paths": [
+        "obj/meshes/tube/tube/tube.xml"
+      ],
+      "primitive_fallback": "chemistry_solution_primitive.xml",
+      "notes": "VLABench chemistry-tube mesh used for a common-sense solution-selection match."
+    },
+    {
+      "key": "chemistry_blue",
+      "category": "tube",
+      "candidate_paths": [
+        "obj/meshes/tube/tube/tube.xml"
+      ],
+      "primitive_fallback": "chemistry_solution_primitive.xml"
+    },
+    {
+      "key": "chemistry_green",
+      "category": "tube",
+      "candidate_paths": [
+        "obj/meshes/tube/tube/tube.xml"
+      ],
+      "primitive_fallback": "chemistry_solution_primitive.xml"
+    },
+    {
+      "key": "chemistry_purple",
+      "category": "tube",
+      "candidate_paths": [
+        "obj/meshes/tube/tube/tube.xml"
+      ],
+      "primitive_fallback": "chemistry_solution_primitive.xml"
+    },
+    {
+      "key": "perception_token",
+      "category": "perception",
+      "candidate_paths": [
+        "obj/meshes/drinks/juice/bottled_drink_2/model.xml",
+        "obj/meshes/drinks/water/bottled_water_4/model.xml",
+        "obj/meshes/drinks/milk/milk_0/model.xml"
+      ],
+      "primitive_fallback": "perception_token_primitive.xml",
+      "notes": "One shared, visibly elongated VLABench bottle mesh contract for upright/fallen discrimination; a clean-room elongated token is used only when the pinned bundle is absent."
+    },
+    {
+      "key": "perception_color",
+      "category": "perception",
+      "candidate_paths": [
+        "obj/meshes/drinks/juice/bottled_drink_2/model.xml",
+        "obj/meshes/drinks/water/bottled_water_4/model.xml"
+      ],
+      "primitive_fallback": "perception_color_primitive.xml",
+      "notes": "Color-only matched appearance adapter; the public task entity IDs remain anonymous."
+    },
+    {
+      "key": "perception_texture",
+      "category": "perception",
+      "candidate_paths": [
+        "obj/meshes/drinks/juice/bottled_drink_2/model.xml",
+        "obj/meshes/drinks/water/bottled_water_4/model.xml"
+      ],
+      "primitive_fallback": "perception_texture_primitive.xml",
+      "notes": "Texture/stripe matched appearance adapter; no texture label is placed in public metadata."
+    },
+    {
+      "key": "perception_instance",
+      "category": "perception",
+      "candidate_paths": [
+        "obj/meshes/drinks/juice/bottled_drink_2/model.xml",
+        "obj/meshes/drinks/water/bottled_water_4/model.xml"
+      ],
+      "primitive_fallback": "perception_instance_primitive.xml",
+      "notes": "Same-mesh instance family with small visual marks for identity discrimination."
+    },
+    {
+      "key": "perception_bin",
+      "category": "container",
+      "candidate_paths": [
+        "obj/meshes/containers/basket/basket/basket.xml",
+        "obj/meshes/containers/tray/tray_0/model.xml"
+      ],
+      "primitive_fallback": "perception_bin_primitive.xml",
+      "notes": "Small source-only receptacle fallback. The terminal checker remains the ordinary BDDL In predicate."
+    },
+    {
+      "key": "apple",
+      "category": "fruit",
+      "candidate_paths": [
+        "obj/meshes/fruit/apple/apple_0/model.xml",
+        "obj/meshes/fruit/apple/apple_*/model.xml"
+      ],
+      "notes": "VLABench apple mesh used by the active-search and semantic-clustering tasks."
+    },
+    {
+      "key": "banana",
+      "category": "fruit",
+      "candidate_paths": [
+        "obj/meshes/fruit/banana/banana_0/banana.xml",
+        "obj/meshes/fruit/banana/banana_*/banana.xml"
+      ],
+      "notes": "VLABench banana mesh used as a semantic-clustering distractor."
+    },
+    {
+      "key": "orange",
+      "category": "fruit",
+      "candidate_paths": [
+        "obj/meshes/fruit/orange/orange_0/model.xml",
+        "obj/meshes/fruit/orange/orange_*/model.xml"
+      ],
+      "notes": "VLABench orange mesh used as an active-search distractor."
+    },
+    {
+      "key": "lemon",
+      "category": "fruit",
+      "candidate_paths": [
+        "obj/meshes/fruit/lemon/lemon_0/model.xml",
+        "obj/meshes/fruit/lemon/lemon_*/model.xml"
+      ],
+      "notes": "VLABench lemon mesh used as an active-search distractor."
+    },
+    {
+      "key": "plate",
+      "category": "tableware",
+      "candidate_paths": [
+        "obj/meshes/tablewares/plates/plate1/plate.xml",
+        "obj/meshes/tablewares/plates/*/plate.xml"
+      ],
+      "notes": "VLABench plate fixture for the ordered dining-table arrangement."
+    },
+    {
+      "key": "fork",
+      "category": "tableware",
+      "candidate_paths": [
+        "obj/meshes/tablewares/forks/fork1/fork.xml",
+        "obj/meshes/tablewares/forks/*/fork.xml"
+      ],
+      "notes": "VLABench fork for the ordered dining-table arrangement."
+    }
+  ]
+}

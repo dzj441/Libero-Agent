@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Repository-owned, self-contained fallback for the VLABench seesaw.
+  This is a clean-room primitive reconstruction of the mechanism contract
+  observed in VLABench (source commit cf588fe60c0c7282174fe979f5913170cfe69017);
+  it is not a copied or redistributed VLABench asset.
+-->
+<mujoco model="libero_vlabench_seesaw_primitive">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="visual">
+      <geom group="1" contype="0" conaffinity="0"/>
+    </default>
+    <default class="collision">
+      <geom group="0" solref="0.001 1" solimp="0.998 0.998 0.001"/>
+    </default>
+  </default>
+  <worldbody>
+    <body>
+      <body name="object">
+        <!-- Dimensions follow the downloaded VLABench seesaw contract:
+             support/base x=0.14 m, board x=0.60 m, and pivot x=0.24 m.
+             The resulting x footprint is approximately [-0.07, 0.55] m and
+             fits the 1.0 x 1.2 m LIBERO tabletop.  The fallback is a
+             texture-free clean-room reconstruction (the external
+             mesh/texture remains user-provided), not a redistributed asset. -->
+        <geom name="base_front_visual" type="box" class="visual" pos="0 0.07 0.10"
+              size="0.07 0.002 0.10" rgba="0.18 0.22 0.28 1"/>
+        <geom name="base_back_visual" type="box" class="visual" pos="0 -0.07 0.10"
+              size="0.07 0.002 0.10" rgba="0.18 0.22 0.28 1"/>
+        <geom name="base_right_visual" type="box" class="visual" pos="0.07 0.06 0.10"
+              size="0.002 0.01 0.10" rgba="0.18 0.22 0.28 1"/>
+        <geom name="base_left_visual" type="box" class="visual" pos="-0.07 0 0.10"
+              size="0.002 0.07 0.10" rgba="0.18 0.22 0.28 1"/>
+        <geom name="base_front_collision" type="box" class="collision" pos="0 0.07 0.10"
+              size="0.07 0.002 0.10"/>
+        <geom name="base_back_collision" type="box" class="collision" pos="0 -0.07 0.10"
+              size="0.07 0.002 0.10"/>
+        <geom name="base_right_collision" type="box" class="collision" pos="0.07 0.06 0.10"
+              size="0.002 0.01 0.10"/>
+        <geom name="base_left_collision" type="box" class="collision" pos="-0.07 0 0.10"
+              size="0.002 0.07 0.10"/>
+        <body name="seesaw" pos="0.24 0 0">
+          <geom name="support_visual" type="box" class="visual" pos="0 0.05 0.10"
+                size="0.05 0.001 0.10" rgba="0.30 0.45 0.45 0.75"/>
+          <geom name="support_collision" type="box" class="collision" pos="0 0.05 0.10"
+                size="0.05 0.001 0.10"/>
+          <body name="board" pos="0 0 0.198" euler="0 -0.5 0">
+            <joint name="seesaw_hinge" type="hinge" pos="0 0 0"
+                 axis="0 1 0" range="0 0.6" limited="true" damping="1"
+                 stiffness="0.6" springref="0"/>
+            <!-- 0.60 m long board, matching the external half-size 0.30. -->
+            <!-- Task placement anchors.  They are intentionally on the
+                 articulated board so an initial target is physically
+                 supported by the mechanism, rather than being teleported
+                 into a hidden answer region. -->
+            <site name="seesaw_left_region" type="box" pos="-0.24 0 0.006" quat="1 0 0 0"
+                  size="0.055 0.040 0.012" rgba="0 0 0 0"/>
+            <site name="seesaw_right_region" type="box" pos="0.24 0 0.006" quat="1 0 0 0"
+                  size="0.055 0.040 0.012" rgba="0 0 0 0"/>
+            <geom name="board_visual" type="box" class="visual" pos="0 0 0"
+                  size="0.30 0.0498 0.001" rgba="0.72 0.42 0.16 1"/>
+            <geom name="board_collision" type="box" class="collision" pos="0 0 0"
+                  size="0.30 0.049 0.001"/>
+            <geom name="board_end_left" type="box" class="visual" pos="-0.30 0 0.02"
+                  size="0.002 0.0498 0.02" rgba="0.72 0.42 0.16 1"/>
+            <geom name="board_end_right" type="box" class="visual" pos="0.30 0 0.02"
+                  size="0.002 0.0498 0.02" rgba="0.72 0.42 0.16 1"/>
+            <geom name="board_end_left_collision" type="box" class="collision" pos="-0.30 0 0.02"
+                  size="0.002 0.0498 0.02"/>
+            <geom name="board_end_right_collision" type="box" class="collision" pos="0.30 0 0.02"
+                  size="0.002 0.0498 0.02"/>
+            <site name="seesaw_center" pos="0 0 0.02" size="0.01" rgba="0 0 0 0"/>
+          </body>
+        </body>
+        <body name="rest" pos="0.50 0 0.08">
+          <geom name="rest_visual" type="box" class="visual" pos="0 0 0"
+                size="0.05 0.05 0.08" rgba="0.35 0.37 0.42 1"/>
+          <geom name="rest_collision" type="box" class="collision" pos="0 0 0"
+                size="0.05 0.05 0.08"/>
+        </body>
+        <!--
+          The source seesaw is a CommonContainer: its low-end payload is
+          enclosed until the board rises.  Keep that interaction contract in
+          the clean-room fallback with static front/back guard rails and a
+          narrow roof aperture.  The rails sit just outside the board's
+          collision width; the target can only emerge vertically after the
+          hinge moves.
+        -->
+        <body name="target_guard" pos="0.026 0 0">
+          <geom name="target_guard_front_visual" type="box" class="visual"
+                pos="0 0.090 0.20" size="0.056 0.010 0.10"
+                rgba="0.20 0.24 0.30 0.90"/>
+          <geom name="target_guard_back_visual" type="box" class="visual"
+                pos="0 -0.090 0.20" size="0.056 0.010 0.10"
+                rgba="0.20 0.24 0.30 0.90"/>
+          <geom name="target_guard_front_collision" type="box" class="collision"
+                pos="0 0.090 0.20" size="0.056 0.010 0.10"/>
+          <geom name="target_guard_back_collision" type="box" class="collision"
+                pos="0 -0.090 0.20" size="0.056 0.010 0.10"/>
+          <!-- Four roof bars leave a 60 mm square escape aperture. -->
+          <geom name="target_guard_roof_left_visual" type="box" class="visual"
+                pos="-0.040 0 0.30" size="0.010 0.050 0.010"
+                rgba="0.20 0.24 0.30 0.90"/>
+          <geom name="target_guard_roof_right_visual" type="box" class="visual"
+                pos="0.040 0 0.30" size="0.010 0.050 0.010"
+                rgba="0.20 0.24 0.30 0.90"/>
+          <geom name="target_guard_roof_front_visual" type="box" class="visual"
+                pos="0 0.040 0.30" size="0.030 0.010 0.010"
+                rgba="0.20 0.24 0.30 0.90"/>
+          <geom name="target_guard_roof_back_visual" type="box" class="visual"
+                pos="0 -0.040 0.30" size="0.030 0.010 0.010"
+                rgba="0.20 0.24 0.30 0.90"/>
+          <geom name="target_guard_roof_left_collision" type="box" class="collision"
+                pos="-0.040 0 0.30" size="0.010 0.050 0.010"/>
+          <geom name="target_guard_roof_right_collision" type="box" class="collision"
+                pos="0.040 0 0.30" size="0.010 0.050 0.010"/>
+          <geom name="target_guard_roof_front_collision" type="box" class="collision"
+                pos="0 0.040 0.30" size="0.030 0.010 0.010"/>
+          <geom name="target_guard_roof_back_collision" type="box" class="collision"
+                pos="0 -0.040 0.30" size="0.030 0.010 0.010"/>
+        </body>
+      </body>
+      <site name="bottom_site" pos="0 0 0" size="0.005" rgba="0 0 0 0"/>
+      <site name="top_site" pos="0.24 0 0.40" size="0.005" rgba="0 0 0 0"/>
+      <site name="horizontal_radius_site" pos="0.55 0 0" size="0.005" rgba="0 0 0 0"/>
+    </body>
+  </worldbody>
+</mujoco>

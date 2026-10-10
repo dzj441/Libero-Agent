@@ -1,0 +1,33 @@
+(define (problem LIBERO_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language Determine which of the three visually identical mugs is heaviest by physically weighing them, then place the heaviest mug in the green bin.)
+  (:regions
+    (mug_workspace
+      (:target main_table)
+      (:ranges ((-0.22 -0.24 -0.06 0.22)))
+      (:yaw_rotation ((-0.35 0.35))))
+    (bin_init_region
+      (:target main_table)
+      (:ranges ((0.18 -0.04 0.22 0.00)))
+      (:yaw_rotation ((0.0 0.0))))
+    (contain_region (:target target_bin_1)))
+  (:fixtures
+    main_table - table)
+  (:objects
+    light_mug_1 - clier_light_mug
+    medium_mug_1 - clier_medium_mug
+    heavy_mug_1 - clier_heavy_mug
+    target_bin_1 - composuite_target_bin)
+  (:obj_of_interest
+    light_mug_1
+    medium_mug_1
+    heavy_mug_1
+    target_bin_1)
+  (:init
+    (On light_mug_1 main_table_mug_workspace)
+    (On medium_mug_1 main_table_mug_workspace)
+    (On heavy_mug_1 main_table_mug_workspace)
+    (On target_bin_1 main_table_bin_init_region))
+  (:goal
+    (And (In heavy_mug_1 target_bin_1_contain_region)))
+)

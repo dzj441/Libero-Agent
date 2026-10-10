@@ -1,0 +1,32 @@
+(define (problem LIBERO_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language The three candidate-button pairs show a small ball, a cylinder, and a cube. Press the button paired with the small ball.)
+  (:regions
+    (left_button_init_region
+      (:target main_table)
+      (:ranges ((-0.001 -0.181 0.001 -0.179)))
+      (:yaw_rotation ((0.0 0.0))))
+    (middle_button_init_region
+      (:target main_table)
+      (:ranges ((-0.001 -0.001 0.001 0.001)))
+      (:yaw_rotation ((0.0 0.0))))
+    (right_button_init_region
+      (:target main_table)
+      (:ranges ((-0.001 0.179 0.001 0.181)))
+      (:yaw_rotation ((0.0 0.0))))
+  )
+  (:fixtures
+    main_table - table
+    button_1 - vlabench_property_weight_sphere
+    button_2 - vlabench_property_weight_cylinder
+    button_3 - vlabench_property_weight_cube
+  )
+  (:objects)
+  (:obj_of_interest button_1 button_2 button_3)
+  (:init
+    (On button_1 main_table_left_button_init_region)
+    (On button_2 main_table_middle_button_init_region)
+    (On button_3 main_table_right_button_init_region)
+  )
+  (:goal (And (On button_1 main_table_left_button_init_region)))
+)

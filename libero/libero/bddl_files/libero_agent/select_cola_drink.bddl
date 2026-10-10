@@ -1,0 +1,30 @@
+(define (problem LIBERO_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language Pick up the cola and place it in the collection bin.)
+  (:regions
+    (top_item_slot (:target main_table) (:ranges ((-0.245 0.085 -0.155 0.165))))
+    (middle_item_slot (:target main_table) (:ranges ((-0.045 0.085 0.045 0.165))))
+    (bottom_item_slot (:target main_table) (:ranges ((0.155 0.085 0.245 0.165))))
+    (bin_init_region (:target main_table) (:ranges ((0.035 -0.165 0.125 -0.075))))
+    (contain_region (:target perception_bin_1))
+  )
+  (:fixtures
+    main_table - table
+  )
+  (:objects
+    milk_1 - vlabench_milk_drink
+    cola_1 - vlabench_cola_drink
+    juice_1 - vlabench_juice_drink
+    perception_bin_1 - vlabench_perception_bin
+  )
+  (:obj_of_interest milk_1 cola_1 juice_1 perception_bin_1)
+  (:init
+    (On milk_1 main_table_top_item_slot)
+    (On cola_1 main_table_middle_item_slot)
+    (On juice_1 main_table_bottom_item_slot)
+    (On perception_bin_1 main_table_bin_init_region)
+  )
+  (:goal
+    (And (In cola_1 perception_bin_1_contain_region))
+  )
+)

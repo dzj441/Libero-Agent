@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Clean-room source-only fallback for a wilted VLABench flower. -->
+<mujoco model="libero_vlabench_wilted_flower_primitive">
+  <worldbody>
+    <body>
+      <body name="object" euler="0 0.35 0">
+        <geom name="wilt_stem_visual" type="capsule" group="1" contype="0" conaffinity="0"
+              fromto="0 0 -0.055 0 0 -0.002" size="0.009" rgba="0.15 0.34 0.12 1"/>
+        <geom name="wilt_petals_visual" type="sphere" group="1" contype="0" conaffinity="0"
+              pos="0 0 -0.005" size="0.039" rgba="0.48 0.43 0.34 1"/>
+        <geom name="wilt_collision" type="capsule" group="0"
+              fromto="0 0 -0.055 0 0 0.005" size="0.018" mass="0.06"/>
+      </body>
+      <site name="bottom_site" pos="0 0 -0.055" size="0.005" rgba="0 0 0 0"/>
+      <site name="top_site" pos="0 0 0.035" size="0.005" rgba="0 0 0 0"/>
+      <site name="horizontal_radius_site" pos="0.040 0 0" size="0.005" rgba="0 0 0 0"/>
+    </body>
+  </worldbody>
+</mujoco>

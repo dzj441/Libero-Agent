@@ -1,0 +1,9 @@
+include LICENSE LICENSE.libero README.md
+include requirements-agent.txt
+recursive-include libero/libero/assets *
+recursive-include libero/libero/bddl_files *.bddl
+recursive-include libero/libero/init_files *.pruned_init
+recursive-include libero/libero/agent_env/integrations/robomemarena/vendor *
+recursive-include libero/libero/agent_env/release *.json
+global-exclude *.pyc *.pyo
+prune **/__pycache__

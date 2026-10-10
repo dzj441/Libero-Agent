@@ -1,0 +1,28 @@
+(define (problem LIBERO_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language Pick up the sponge, wipe the entire brown spill, then release the sponge on the blue rest area.)
+  (:regions
+    (sponge_init_region
+      (:target main_table)
+      (:ranges ((-0.32 -0.28 -0.18 -0.16)))
+      (:yaw_rotation ((0.0 0.0))))
+    (spill_init_region
+      (:target main_table)
+      (:ranges ((-0.02 0.08 0.02 0.12)))
+      (:yaw_rotation ((0.0 0.0))))
+    (sponge_rest_region
+      (:target spill_patch_1)))
+  (:fixtures
+    main_table - table
+    spill_patch_1 - robocasa_spill_patch)
+  (:objects
+    sponge_1 - robocasa_sponge)
+  (:obj_of_interest sponge_1 spill_patch_1)
+  (:init
+    (On sponge_1 main_table_sponge_init_region)
+    (On spill_patch_1 main_table_spill_init_region))
+  ;; Coverage is a history-dependent physical event. The private evaluator is
+  ;; authoritative; the BDDL goal preserves the visible final release target.
+  (:goal
+    (And (On sponge_1 spill_patch_1_sponge_rest_region)))
+)

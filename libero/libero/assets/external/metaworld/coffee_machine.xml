@@ -1,0 +1,55 @@
+<mujoco model="metaworld_coffee_machine">
+  <!-- Visual meshes and button mechanism adapted from Meta-World (MIT). -->
+  <asset>
+    <mesh name="coffee_body_1" file="meshes/coffeemachine/body1.stl"/>
+    <mesh name="coffee_body_2" file="meshes/coffeemachine/body2.stl"/>
+    <mesh name="coffee_body_piece" file="meshes/coffeemachine/bodypiece1.stl"/>
+    <mesh name="coffee_spout" file="meshes/coffeemachine/spout.stl"/>
+    <mesh name="coffee_button_ring" file="meshes/coffeemachine/buttonring.stl"/>
+    <material name="coffee_red" rgba="0.40 0.08 0.06 1" shininess="0.55" specular="0.3"/>
+    <material name="coffee_black" rgba="0.035 0.035 0.040 1" shininess="0.4"/>
+    <material name="coffee_metal" rgba="0.65 0.67 0.70 1" shininess="0.8" specular="0.7"/>
+  </asset>
+  <worldbody>
+    <body>
+      <body name="object">
+        <geom name="body_1_visual" type="mesh" mesh="coffee_body_1" pos="0 0 0.155"
+              material="coffee_red" contype="0" conaffinity="0" group="1"/>
+        <geom name="body_2_visual" type="mesh" mesh="coffee_body_2" pos="0 -0.042 0.34"
+              material="coffee_red" contype="0" conaffinity="0" group="1"/>
+        <geom name="body_piece_visual" type="mesh" mesh="coffee_body_piece" pos="0 0 0.155"
+              material="coffee_black" contype="0" conaffinity="0" group="1"/>
+        <geom name="spout_visual" type="mesh" mesh="coffee_spout" pos="0 -0.141 0.195"
+              material="coffee_black" contype="0" conaffinity="0" group="1"/>
+        <geom name="button_ring_visual" type="mesh" mesh="coffee_button_ring"
+              euler="1.5707963 0 0" pos="0 -0.183 0.34" material="coffee_black"
+              contype="0" conaffinity="0" group="1"/>
+        <geom name="base_collision" type="box" pos="0 0 0.155" size="0.10 0.098 0.115"
+              mass="20" friction="1 0.3 0.1" group="0" rgba="0.3 0.3 1 0.20"/>
+        <geom name="top_collision" type="box" pos="0 0 0.34" size="0.10 0.098 0.070"
+              mass="10" friction="1 0.3 0.1" group="0" rgba="0.3 0.3 1 0.20"/>
+        <geom name="spout_collision" type="cylinder" pos="0 -0.141 0.192" size="0.016 0.041"
+              mass="1" friction="1 0.3 0.1" group="0" rgba="0.3 0.3 1 0.20"/>
+        <body name="button" pos="0 0 0">
+          <joint name="button_slide" type="slide" axis="0 1 0" range="0 0.030"
+                 limited="true" damping="1.0" stiffness="20" springref="0"
+                 frictionloss="0.01"/>
+          <geom name="button_visual" type="cylinder" euler="1.5707963 0 0"
+                pos="0 -0.190 0.34" size="0.032 0.030" material="coffee_metal"
+                contype="0" conaffinity="0" group="1"/>
+          <geom name="button_collision" type="cylinder" euler="1.5707963 0 0"
+                pos="0 -0.190 0.34" size="0.032 0.030" mass="0.12"
+                friction="1 0.3 0.1" group="0" rgba="0.3 0.3 1 0.20"/>
+        </body>
+        <geom name="coffee_liquid_visual" type="capsule" pos="0 -0.141 0.135"
+              size="0.005 0.050" rgba="0.30 0.12 0.025 0" contype="0" conaffinity="0" group="1"/>
+        <site name="mug_region" type="box" pos="0 -0.205 0.100" quat="1 0 0 0" size="0.060 0.055 0.070"
+              rgba="0 0 0 0" group="3"/>
+        <site name="button_site" pos="0 -0.225 0.34" size="0.004" rgba="0 0 0 0"/>
+      </body>
+      <site name="bottom_site" pos="0 0 0" size="0.005" rgba="0 0 0 0"/>
+      <site name="top_site" pos="0 0 0.41" size="0.005" rgba="0 0 0 0"/>
+      <site name="horizontal_radius_site" pos="0.12 0.25 0" size="0.005" rgba="0 0 0 0"/>
+    </body>
+  </worldbody>
+</mujoco>

@@ -1,0 +1,42 @@
+(define (problem LIBERO_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language Pick up the blue chemistry tube and insert it vertically into the rear-center empty slot of the tube rack.)
+
+  (:regions
+    (blue_tube_init_region
+      (:target main_table)
+      (:ranges ((-0.34 0.14 -0.24 0.24)))
+    )
+    (tube_stand_init_region
+      (:target main_table)
+      (:ranges ((-0.08 -0.28 0.04 -0.12)))
+      (:yaw_rotation ((1.57079632679 1.57079632679)))
+    )
+    (rear_center_slot
+      (:target tube_stand_1)
+    )
+  )
+
+  (:fixtures
+    main_table - table
+    tube_stand_1 - vlabench_tube_stand
+  )
+
+  (:objects
+    blue_tube_1 - vlabench_tube
+  )
+
+  (:obj_of_interest
+    blue_tube_1
+    tube_stand_1
+  )
+
+  (:init
+    (On blue_tube_1 main_table_blue_tube_init_region)
+    (On tube_stand_1 main_table_tube_stand_init_region)
+  )
+
+  (:goal
+    (And (In blue_tube_1 tube_stand_1_rear_center_slot))
+  )
+)

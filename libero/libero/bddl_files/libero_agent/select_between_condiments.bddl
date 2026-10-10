@@ -1,0 +1,43 @@
+(define (problem LIBERO_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language Pick up the object positioned between the other two objects and place it in the basket.)
+  (:regions
+    (top_condiment_slot
+      (:target main_table)
+      (:ranges ((-0.230 0.095 -0.170 0.155))))
+    (middle_condiment_slot
+      (:target main_table)
+      (:ranges ((-0.125 0.095 -0.065 0.155))))
+    (bottom_condiment_slot
+      (:target main_table)
+      (:ranges ((-0.020 0.095 0.040 0.155))))
+    (basket_init_region
+      (:target main_table)
+      (:ranges ((0.155 -0.265 0.245 -0.175))))
+    (contain_region (:target basket_1))
+  )
+  (:fixtures
+    main_table - table
+  )
+  (:objects
+    sugar_1 - vlabench_perception_sugar_unlabeled
+    salt_1 - vlabench_perception_salt_unlabeled
+    hotsauce_1 - vlabench_perception_hotsauce_unlabeled
+    basket_1 - basket
+  )
+  (:obj_of_interest
+    sugar_1
+    salt_1
+    hotsauce_1
+    basket_1
+  )
+  (:init
+    (On sugar_1 main_table_top_condiment_slot)
+    (On salt_1 main_table_middle_condiment_slot)
+    (On hotsauce_1 main_table_bottom_condiment_slot)
+    (On basket_1 main_table_basket_init_region)
+  )
+  (:goal
+    (And (In salt_1 basket_1_contain_region))
+  )
+)

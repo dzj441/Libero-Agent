@@ -1,0 +1,37 @@
+<mujoco model="robocasa_spill_patch">
+  <!-- Visual, collision-free spill used by the clean-room WipeTable adaptation. -->
+  <worldbody>
+    <body>
+      <body name="object">
+        <geom name="spill_marker_0" type="cylinder" pos="-0.080 -0.035 0.046" size="0.035 0.002"
+              rgba="0.42 0.10 0.015 0.96" contype="0" conaffinity="0" group="1"/>
+        <geom name="spill_marker_1" type="cylinder" pos="-0.040 0.015 0.046" size="0.042 0.002"
+              rgba="0.42 0.10 0.015 0.96" contype="0" conaffinity="0" group="1"/>
+        <geom name="spill_marker_2" type="cylinder" pos="0.005 -0.025 0.046" size="0.038 0.002"
+              rgba="0.42 0.10 0.015 0.96" contype="0" conaffinity="0" group="1"/>
+        <geom name="spill_marker_3" type="cylinder" pos="0.050 0.025 0.046" size="0.040 0.002"
+              rgba="0.42 0.10 0.015 0.96" contype="0" conaffinity="0" group="1"/>
+        <geom name="spill_marker_4" type="cylinder" pos="0.090 -0.020 0.046" size="0.030 0.002"
+              rgba="0.42 0.10 0.015 0.96" contype="0" conaffinity="0" group="1"/>
+        <geom name="spill_marker_5" type="cylinder" pos="-0.095 0.040 0.046" size="0.025 0.002"
+              rgba="0.42 0.10 0.015 0.96" contype="0" conaffinity="0" group="1"/>
+        <geom name="spill_marker_6" type="cylinder" pos="0.105 0.045 0.046" size="0.024 0.002"
+              rgba="0.42 0.10 0.015 0.96" contype="0" conaffinity="0" group="1"/>
+        <!-- Keep the task-semantic release target visible in ordinary RGB. -->
+        <geom name="sponge_rest_visual" type="box" pos="0.140 -0.205 0.046"
+              size="0.075 0.060 0.003" rgba="0.04 0.24 0.92 1"
+              contype="0" conaffinity="0" group="1"/>
+        <geom name="sponge_rest_collision" type="box" pos="0.140 -0.205 0.046"
+              size="0.075 0.060 0.003" mass="1" friction="1.2 0.3 0.1"
+              rgba="0.3 0.3 1 0.2" group="0"/>
+        <site name="spill_region" type="box" pos="0 0 0.065" size="0.145 0.085 0.030"
+              rgba="0 0 0 0" group="3"/>
+        <site name="sponge_rest_region" type="box" pos="0.140 -0.205 0.049"
+              quat="1 0 0 0" size="0.065 0.050 0.003" rgba="0 0 0 0" group="3"/>
+      </body>
+      <site name="bottom_site" pos="0 0 0" size="0.003" rgba="0 0 0 0"/>
+      <site name="top_site" pos="0 0 0.045" size="0.003" rgba="0 0 0 0"/>
+      <site name="horizontal_radius_site" pos="0.145 0.085 0" size="0.003" rgba="0 0 0 0"/>
+    </body>
+  </worldbody>
+</mujoco>

@@ -1,0 +1,52 @@
+<mujoco model="clier_weighing_mug">
+  <!-- Mesh geometry adapted from CLIER / SHOP-VRB2 (MIT, pinned in docs). -->
+  <asset>
+    <mesh name="mug_visual" file="meshes/mug1/simple_mesh.stl" scale="0.65 0.65 0.65"/>
+    <mesh name="mug_hull_1" file="meshes/mug1/mug1_hull_1.stl" scale="0.65 0.65 0.65"/>
+    <mesh name="mug_hull_2" file="meshes/mug1/mug1_hull_2.stl" scale="0.65 0.65 0.65"/>
+    <mesh name="mug_hull_3" file="meshes/mug1/mug1_hull_3.stl" scale="0.65 0.65 0.65"/>
+    <mesh name="mug_hull_4" file="meshes/mug1/mug1_hull_4.stl" scale="0.65 0.65 0.65"/>
+    <mesh name="mug_hull_5" file="meshes/mug1/mug1_hull_5.stl" scale="0.65 0.65 0.65"/>
+    <mesh name="mug_hull_6" file="meshes/mug1/mug1_hull_6.stl" scale="0.65 0.65 0.65"/>
+    <mesh name="mug_hull_7" file="meshes/mug1/mug1_hull_7.stl" scale="0.65 0.65 0.65"/>
+    <mesh name="mug_hull_8" file="meshes/mug1/mug1_hull_8.stl" scale="0.65 0.65 0.65"/>
+    <mesh name="mug_hull_9" file="meshes/mug1/mug1_hull_9.stl" scale="0.65 0.65 0.65"/>
+    <mesh name="mug_hull_10" file="meshes/mug1/mug1_hull_10.stl" scale="0.65 0.65 0.65"/>
+    <mesh name="mug_hull_11" file="meshes/mug1/mug1_hull_11.stl" scale="0.65 0.65 0.65"/>
+    <mesh name="mug_hull_12" file="meshes/mug1/mug1_hull_12.stl" scale="0.65 0.65 0.65"/>
+    <mesh name="mug_hull_13" file="meshes/mug1/mug1_hull_13.stl" scale="0.65 0.65 0.65"/>
+    <mesh name="mug_hull_14" file="meshes/mug1/mug1_hull_14.stl" scale="0.65 0.65 0.65"/>
+    <mesh name="mug_hull_15" file="meshes/mug1/mug1_hull_15.stl" scale="0.65 0.65 0.65"/>
+    <mesh name="mug_hull_16" file="meshes/mug1/mug1_hull_16.stl" scale="0.65 0.65 0.65"/>
+    <mesh name="mug_hull_17" file="meshes/mug1/mug1_hull_17.stl" scale="0.65 0.65 0.65"/>
+    <material name="neutral_mug" rgba="0.70 0.72 0.75 1" shininess="0.35" specular="0.25"/>
+  </asset>
+  <worldbody>
+    <body>
+      <body name="object">
+        <geom name="visual" type="mesh" mesh="mug_visual" material="neutral_mug"
+              contype="0" conaffinity="0" group="1"/>
+        <geom name="hull_1" type="mesh" mesh="mug_hull_1" group="0" friction="0.95 0.3 0.1"/>
+        <geom name="hull_2" type="mesh" mesh="mug_hull_2" group="0" friction="0.95 0.3 0.1"/>
+        <geom name="hull_3" type="mesh" mesh="mug_hull_3" group="0" friction="0.95 0.3 0.1"/>
+        <geom name="hull_4" type="mesh" mesh="mug_hull_4" group="0" friction="0.95 0.3 0.1"/>
+        <geom name="hull_5" type="mesh" mesh="mug_hull_5" group="0" friction="0.95 0.3 0.1"/>
+        <geom name="hull_6" type="mesh" mesh="mug_hull_6" group="0" friction="0.95 0.3 0.1"/>
+        <geom name="hull_7" type="mesh" mesh="mug_hull_7" group="0" friction="0.95 0.3 0.1"/>
+        <geom name="hull_8" type="mesh" mesh="mug_hull_8" group="0" friction="0.95 0.3 0.1"/>
+        <geom name="hull_9" type="mesh" mesh="mug_hull_9" group="0" friction="0.95 0.3 0.1"/>
+        <geom name="hull_10" type="mesh" mesh="mug_hull_10" group="0" friction="0.95 0.3 0.1"/>
+        <geom name="hull_11" type="mesh" mesh="mug_hull_11" group="0" friction="0.95 0.3 0.1"/>
+        <geom name="hull_12" type="mesh" mesh="mug_hull_12" group="0" friction="0.95 0.3 0.1"/>
+        <geom name="hull_13" type="mesh" mesh="mug_hull_13" group="0" friction="0.95 0.3 0.1"/>
+        <geom name="hull_14" type="mesh" mesh="mug_hull_14" group="0" friction="0.95 0.3 0.1"/>
+        <geom name="hull_15" type="mesh" mesh="mug_hull_15" group="0" friction="0.95 0.3 0.1"/>
+        <geom name="hull_16" type="mesh" mesh="mug_hull_16" group="0" friction="0.95 0.3 0.1"/>
+        <geom name="hull_17" type="mesh" mesh="mug_hull_17" group="0" friction="0.95 0.3 0.1"/>
+      </body>
+      <site name="bottom_site" pos="0 0 0" size="0.004" rgba="0 0 0 0"/>
+      <site name="top_site" pos="0 0 0.076" size="0.004" rgba="0 0 0 0"/>
+      <site name="horizontal_radius_site" pos="0.046 0.035 0" size="0.004" rgba="0 0 0 0"/>
+    </body>
+  </worldbody>
+</mujoco>

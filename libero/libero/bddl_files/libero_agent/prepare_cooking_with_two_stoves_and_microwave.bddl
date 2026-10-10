@@ -1,0 +1,60 @@
+(define (problem LIBERO_Kitchen_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language Place the moka pot on the stove next to it and turn that stove on. Then place the frying pan on the other stove and turn it on. Finally, open the microwave.)
+  (:regions
+    (microwave_init_region
+      (:target kitchen_table)
+      (:ranges ((-0.01 -0.26 0.01 -0.24)))
+      (:yaw_rotation ((3.141592653589793 3.141592653589793))))
+    (flat_stove_1_init_region
+      (:target kitchen_table)
+      (:ranges ((-0.41 -0.04 -0.39 -0.02)))
+      (:yaw_rotation ((0.0 0.0))))
+    (flat_stove_2_init_region
+      (:target kitchen_table)
+      (:ranges ((-0.20 0.26 -0.18 0.28)))
+      (:yaw_rotation ((0.0 0.0))))
+    (moka_pot_init_region
+      (:target kitchen_table)
+      (:ranges ((0.08 0.20 0.12 0.24)))
+      (:yaw_rotation ((0.0 0.0))))
+    (frypan_init_region
+      (:target kitchen_table)
+      (:ranges ((0.18 0.04 0.22 0.08)))
+      (:yaw_rotation ((0.0 0.0))))
+    (cook_region (:target flat_stove_1))
+    (cook_region (:target flat_stove_2))
+    (top_side (:target microwave_1))
+    (heating_region (:target microwave_1)))
+  (:fixtures
+    kitchen_table - kitchen_table
+    flat_stove_1 flat_stove_2 - flat_stove
+    microwave_1 - microwave)
+  (:objects
+    moka_pot_1 - moka_pot
+    chefmate_8_frypan_1 - long_horizon_frypan)
+  (:obj_of_interest
+    moka_pot_1
+    chefmate_8_frypan_1
+    flat_stove_1
+    flat_stove_2
+    microwave_1)
+  (:init
+    (On flat_stove_1 kitchen_table_flat_stove_1_init_region)
+    (On flat_stove_2 kitchen_table_flat_stove_2_init_region)
+    (On microwave_1 kitchen_table_microwave_init_region)
+    (On moka_pot_1 kitchen_table_moka_pot_init_region)
+    (On chefmate_8_frypan_1 kitchen_table_frypan_init_region)
+    (Turnoff flat_stove_1)
+    (Turnoff flat_stove_2)
+    (Close microwave_1))
+  ;; The private evaluator rejects any out-of-order transition and preserves
+  ;; the five causal stages. This flat goal remains useful for diagnostics.
+  (:goal
+    (And
+      (On moka_pot_1 flat_stove_2_cook_region)
+      (Turnon flat_stove_2)
+      (On chefmate_8_frypan_1 flat_stove_1_cook_region)
+      (Turnon flat_stove_1)
+      (Open microwave_1)))
+)

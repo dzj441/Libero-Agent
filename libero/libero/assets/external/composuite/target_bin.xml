@@ -1,0 +1,36 @@
+<mujoco model="composuite_target_bin">
+  <asset>
+    <material name="target_green" rgba="0.12 0.55 0.22 1" shininess="0.25"/>
+  </asset>
+  <worldbody>
+    <body>
+      <body name="object">
+        <geom name="bottom_visual" type="box" pos="0 0 0.008" size="0.110 0.115 0.008"
+              material="target_green" contype="0" conaffinity="0" group="1"/>
+        <geom name="front_visual" type="box" pos="-0.105 0 0.060" size="0.008 0.115 0.060"
+              material="target_green" contype="0" conaffinity="0" group="1"/>
+        <geom name="back_visual" type="box" pos="0.105 0 0.060" size="0.008 0.115 0.060"
+              material="target_green" contype="0" conaffinity="0" group="1"/>
+        <geom name="left_visual" type="box" pos="0 -0.110 0.060" size="0.110 0.008 0.060"
+              material="target_green" contype="0" conaffinity="0" group="1"/>
+        <geom name="right_visual" type="box" pos="0 0.110 0.060" size="0.110 0.008 0.060"
+              material="target_green" contype="0" conaffinity="0" group="1"/>
+        <geom name="bottom_collision" type="box" pos="0 0 0.008" size="0.110 0.115 0.008"
+              mass="2" friction="1 0.3 0.1" group="0" rgba="0.3 0.3 1 0.2"/>
+        <geom name="front_collision" type="box" pos="-0.105 0 0.060" size="0.008 0.115 0.060"
+              mass="1" friction="1 0.3 0.1" group="0" rgba="0.3 0.3 1 0.2"/>
+        <geom name="back_collision" type="box" pos="0.105 0 0.060" size="0.008 0.115 0.060"
+              mass="1" friction="1 0.3 0.1" group="0" rgba="0.3 0.3 1 0.2"/>
+        <geom name="left_collision" type="box" pos="0 -0.110 0.060" size="0.110 0.008 0.060"
+              mass="1" friction="1 0.3 0.1" group="0" rgba="0.3 0.3 1 0.2"/>
+        <geom name="right_collision" type="box" pos="0 0.110 0.060" size="0.110 0.008 0.060"
+              mass="1" friction="1 0.3 0.1" group="0" rgba="0.3 0.3 1 0.2"/>
+        <site name="contain_region" type="box" pos="0 0 0.075" quat="1 0 0 0" size="0.095 0.098 0.075"
+              rgba="0 0 0 0" group="3"/>
+      </body>
+      <site name="bottom_site" pos="0 0 0" size="0.005" rgba="0 0 0 0"/>
+      <site name="top_site" pos="0 0 0.135" size="0.005" rgba="0 0 0 0"/>
+      <site name="horizontal_radius_site" pos="0.118 0.123 0" size="0.005" rgba="0 0 0 0"/>
+    </body>
+  </worldbody>
+</mujoco>

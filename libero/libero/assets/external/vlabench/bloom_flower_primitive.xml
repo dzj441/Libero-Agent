@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Clean-room source-only fallback for a blooming VLABench flower. -->
+<mujoco model="libero_vlabench_bloom_flower_primitive">
+  <worldbody>
+    <body>
+      <body name="object">
+        <geom name="bloom_stem_visual" type="capsule" group="1" contype="0" conaffinity="0"
+              fromto="0 0 -0.055 0 0 0.020" size="0.009" rgba="0.12 0.52 0.16 1"/>
+        <geom name="bloom_petals_visual" type="sphere" group="1" contype="0" conaffinity="0"
+              pos="0 0 0.035" size="0.050" rgba="0.95 0.38 0.58 1"/>
+        <geom name="bloom_collision" type="capsule" group="0"
+              fromto="0 0 -0.055 0 0 0.035" size="0.018" mass="0.06"/>
+      </body>
+      <site name="bottom_site" pos="0 0 -0.055" size="0.005" rgba="0 0 0 0"/>
+      <site name="top_site" pos="0 0 0.085" size="0.005" rgba="0 0 0 0"/>
+      <site name="horizontal_radius_site" pos="0.050 0 0" size="0.005" rgba="0 0 0 0"/>
+    </body>
+  </worldbody>
+</mujoco>

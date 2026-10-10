@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Task-local neutral counterweight; visual geometry matches every variant. -->
+<mujoco model="libero_vlabench_seesaw_weight_heavy">
+  <compiler angle="radian"/>
+  <worldbody>
+    <body>
+      <body name="object">
+        <geom name="weight_visual" type="box" size="0.022 0.022 0.022"
+              group="1" rgba="0.16 0.20 0.28 1" contype="0" conaffinity="0"/>
+        <geom name="weight_collision" type="cylinder" size="0.018 0.022"
+              mass="1.20" friction="1.5 0.3 0.1" rgba="0 0 0 0"
+              contype="1" conaffinity="1"/>
+      </body>
+      <site name="bottom_site" pos="0 0 -0.022" size="0.005" rgba="0 0 0 0"/>
+      <site name="top_site" pos="0 0 0.022" size="0.005" rgba="0 0 0 0"/>
+      <site name="horizontal_radius_site" pos="0.022 0 0" size="0.005" rgba="0 0 0 0"/>
+    </body>
+  </worldbody>
+</mujoco>

@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LIBERO Agent Session Viewer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">READ-ONLY EVALUATOR VIEW</div>
+        <h1>LIBERO Agent Session Viewer</h1>
+      </div>
+      <div class="run-controls">
+        <label for="run-select">Run</label>
+        <select id="run-select"></select>
+        <button id="refresh-button" type="button">刷新</button>
+      </div>
+    </header>
+
+    <main id="app" class="app-shell">
+      <section id="loading" class="panel loading">正在读取 Agent run…</section>
+      <section id="error" class="panel error hidden"></section>
+
+      <div id="content" class="hidden">
+        <section class="panel summary-panel">
+          <div>
+            <div id="run-status" class="status-pill"></div>
+            <h2 id="task-title"></h2>
+            <p id="run-subtitle" class="muted"></p>
+          </div>
+          <div id="summary-grid" class="summary-grid"></div>
+        </section>
+
+        <section class="media-layout">
+          <article class="panel video-panel">
+            <div class="section-heading">
+              <div>
+                <div class="eyebrow">SIMULATOR</div>
+                <h2>连续物理录像</h2>
+              </div>
+            </div>
+            <video id="run-video" controls preload="metadata"></video>
+            <p id="no-video" class="empty hidden">此 run 没有连续录像。</p>
+          </article>
+
+          <article class="panel prompt-panel">
+            <div class="section-heading">
+              <div>
+                <div class="eyebrow">CODEX SESSION</div>
+                <h2>Prompt 与运行上下文</h2>
+              </div>
+            </div>
+            <div id="session-overview"></div>
+            <details open>
+              <summary>Benchmark task prompt</summary>
+              <pre id="task-prompt"></pre>
+            </details>
+            <details>
+              <summary>Codex runtime-injected user context</summary>
+              <pre id="runtime-user-context"></pre>
+            </details>
+            <details>
+              <summary>Base instructions</summary>
+              <pre id="base-instructions"></pre>
+            </details>
+            <details>
+              <summary>Developer messages</summary>
+              <pre id="developer-messages"></pre>
+            </details>
+            <details>
+              <summary>Runtime settings</summary>
+              <pre id="runtime-settings"></pre>
+            </details>
+            <details>
+              <summary>Session record coverage</summary>
+              <pre id="session-coverage"></pre>
+            </details>
+          </article>
+        </section>
+
+        <section class="panel timeline-panel">
+          <div class="section-heading timeline-heading">
+            <div>
+              <div class="eyebrow">ACTION-ALIGNED TRACE</div>
+              <h2>Agent 时间线</h2>
+            </div>
+            <div class="step-nav">
+              <button id="previous-step" type="button">←</button>
+              <span id="step-counter"></span>
+              <button id="next-step" type="button">→</button>
+            </div>
+          </div>
+          <div id="timeline" class="timeline"></div>
+        </section>
+
+        <section class="step-layout">
+          <article class="panel activity-panel">
+            <div class="section-heading">
+              <div>
+                <div class="eyebrow">WHAT CODEX DID</div>
+                <h2 id="step-title">Agent activity</h2>
+              </div>
+            </div>
+            <div id="activity-list" class="activity-list"></div>
+          </article>
+
+          <article class="panel action-panel">
+            <div class="section-heading">
+              <div>
+                <div class="eyebrow">ROBOT CONTROL</div>
+                <h2>Action 与环境回执</h2>
+              </div>
+            </div>
+            <div id="action-status"></div>
+            <h3>Request</h3>
+            <pre id="action-request"></pre>
+            <h3>Response</h3>
+            <pre id="action-response"></pre>
+          </article>
+        </section>
+
+        <section class="panel observation-panel">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">RETURNED AFTER ACTION</div>
+              <h2 id="observation-title">Observation</h2>
+            </div>
+          </div>
+          <div id="observation-images" class="image-grid"></div>
+          <div id="observation-downloads" class="download-row"></div>
+          <div class="observation-json-grid">
+            <details>
+              <summary>Robot state</summary>
+              <pre id="observation-state"></pre>
+            </details>
+            <details>
+              <summary>Proprioception</summary>
+              <pre id="observation-proprioception"></pre>
+            </details>
+            <details>
+              <summary>Coordinate conventions</summary>
+              <pre id="observation-conventions"></pre>
+            </details>
+          </div>
+        </section>
+
+        <section id="tail-panel" class="panel hidden">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">AFTER FINAL ROBOT COMMAND</div>
+              <h2>Session tail</h2>
+            </div>
+          </div>
+          <div id="tail-activity" class="activity-list"></div>
+        </section>
+      </div>
+    </main>
+
+    <template id="activity-template">
+      <article class="activity-card">
+        <div class="activity-header">
+          <span class="activity-kind"></span>
+          <span class="activity-time"></span>
+        </div>
+        <div class="activity-title"></div>
+        <div class="activity-parts"></div>
+        <div class="activity-image"></div>
+        <details class="activity-details">
+          <summary>详细内容 / 输出</summary>
+          <pre></pre>
+        </details>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>

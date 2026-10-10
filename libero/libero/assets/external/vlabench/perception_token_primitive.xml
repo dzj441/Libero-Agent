@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- One shared clean-room mesh surrogate for pose/instance perception tests. -->
+<mujoco model="libero_vlabench_perception_token_primitive">
+  <worldbody>
+    <body>
+      <body name="object">
+        <geom name="token_visual" type="box" group="1" contype="0" conaffinity="0"
+              size="0.036 0.024 0.060" rgba="0.18 0.55 0.84 1"/>
+        <geom name="token_collision" type="box" group="0" size="0.034 0.022 0.058"
+              mass="0.08"/>
+      </body>
+      <site name="bottom_site" pos="0 0 -0.060" size="0.005" rgba="0 0 0 0"/>
+      <site name="top_site" pos="0 0 0.060" size="0.005" rgba="0 0 0 0"/>
+      <site name="horizontal_radius_site" pos="0.036 0 0" size="0.005" rgba="0 0 0 0"/>
+    </body>
+  </worldbody>
+</mujoco>

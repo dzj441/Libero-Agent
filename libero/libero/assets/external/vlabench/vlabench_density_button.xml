@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Clean-room LIBERO wrapper for the primitive VLABench Button entity.
+     The site is a real MuJoCo touch sensor; the three task aliases only
+     change the candidate material. -->
+<mujoco model="libero_vlabench_density_button">
+  <compiler angle="radian"/>
+  <worldbody>
+    <body>
+      <body name="object">
+        <!-- VLABench's Button is a fixed touch target.  It is deliberately
+             not given an invented actuator/joint: pressing is established by
+             the compiled touch sensor under contact force. -->
+        <!-- A raised pedestal makes the button reachable from above by the
+             Panda fingers without requiring the fingers to penetrate the
+             table.  The cap top is about 9.5 cm above the table plane. -->
+        <geom name="button_pedestal" type="cylinder" size="0.034 0.042"
+              pos="0 0 0.048" mass="0.03" group="1"
+              rgba="0.12 0.12 0.12 1"/>
+        <geom name="button_cap" type="cylinder" size="0.032 0.010"
+              pos="0 0 0.085" mass="0.01" group="1"
+              rgba="0.85 0.12 0.12 1"
+              solref="0.002 1"/>
+        <geom name="button_base" type="cylinder" size="0.038 0.006"
+              pos="0 0 0.006" mass="0.03" group="1"
+              rgba="0.12 0.12 0.12 1"/>
+        <geom name="candidate_visual" type="box" size="0.025 0.025 0.025"
+              pos="0 -0.075 0.160" mass="0.08" group="1"
+              contype="0" conaffinity="0" rgba="0.35 0.35 0.35 1"/>
+        <geom name="candidate_collision" type="box" size="0.024 0.024 0.024"
+              pos="0 -0.075 0.160" mass="0.08"
+              contype="0" conaffinity="0" rgba="0 0 0 0"/>
+        <site name="button_touch_site" type="cylinder" size="0.032 0.010"
+              pos="0 0 0.085" rgba="0 1 0 0"/>
+        <site name="button_default_site" pos="0 0 0.085" size="0.005"
+              rgba="1 0 0 0"/>
+      </body>
+    </body>
+  </worldbody>
+  <sensor>
+    <touch name="button_touch" site="button_touch_site"/>
+  </sensor>
+</mujoco>

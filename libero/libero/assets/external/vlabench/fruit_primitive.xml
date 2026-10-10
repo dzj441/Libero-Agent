@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Clean-room source-only fallback for the VLABench fruit family. -->
+<mujoco model="libero_vlabench_fruit_primitive">
+  <worldbody>
+    <body>
+      <body name="object">
+        <geom name="fruit_visual" type="sphere" group="1" contype="0" conaffinity="0"
+              size="0.045" rgba="0.92 0.18 0.08 1"/>
+        <geom name="fruit_collision" type="sphere" group="0" size="0.043"
+              mass="0.08"/>
+      </body>
+      <site name="bottom_site" pos="0 0 -0.045" size="0.005" rgba="0 0 0 0"/>
+      <site name="top_site" pos="0 0 0.045" size="0.005" rgba="0 0 0 0"/>
+      <site name="horizontal_radius_site" pos="0.045 0 0" size="0.005" rgba="0 0 0 0"/>
+    </body>
+  </worldbody>
+</mujoco>
